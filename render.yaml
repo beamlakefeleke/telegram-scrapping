@@ -2,7 +2,7 @@ services:
   - type: web
     name: telegram-job-scraper
     env: node
-    plan: starter  # Changed from 'free' to 'starter' for 24/7 operation ($7/month)
+    plan: free  # Changed from 'free' to 'starter' for 24/7 operation ($7/month)
     buildCommand: npm install
     startCommand: npm start
     envVars:
