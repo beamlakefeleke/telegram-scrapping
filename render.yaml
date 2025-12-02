@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: telegram-job-scraper
+    env: node
+    plan: starter  # Changed from 'free' to 'starter' for 24/7 operation ($7/month)
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: API_ID
+        sync: false
+      - key: API_HASH
+        sync: false
+      - key: SESSION_STRING
+        sync: false
+      - key: BOT_TOKEN
+        sync: false
+      - key: SOURCE_CHANNEL
+        sync: false
+      - key: TARGET_CHANNEL
+        sync: false
+      - key: JOB_KEYWORDS
+        value: developer,flutter,react,backend,frontend,software,engineer,programmer,coder,nodejs,python,javascript,typescript,fullstack,devops,ui,ux,designer,qa,test
+      - key: POLL_INTERVAL
+        value: 30
+      - key: LOG_LEVEL
+        value: info
+
