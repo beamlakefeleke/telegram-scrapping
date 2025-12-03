@@ -182,125 +182,14 @@ The app automatically cleans up old message IDs (keeps last 10,000) to prevent s
 
 MIT License
 
-## Deployment to Render 🚀
-
-### Prerequisites for Render Deployment
-
-1. **Get your session string locally first:**
-   - Run the app locally: `npm start`
-   - Complete the authentication process (phone number + code)
-   - Copy the `SESSION_STRING` from the logs
-   - This is required because Render doesn't support interactive input
-
-### Deploy to Render
-
-#### Option 1: Using Render Dashboard
-
-1. **Push your code to GitHub:**
-   ```bash
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git remote add origin <your-github-repo-url>
-   git push -u origin main
-   ```
-
-2. **Create a new Web Service on Render:**
-   - Go to [Render Dashboard](https://dashboard.render.com)
-   - Click "New +" → "Web Service"
-   - Connect your GitHub repository
-   - Select the repository and branch
-
-3. **Configure the service:**
-   - **Name**: `telegram-job-scraper` (or your preferred name)
-   - **Environment**: `Node`
-   - **Build Command**: `npm install`
-   - **Start Command**: `npm start`
-   - **Plan**: Free (or paid for better performance)
-
-4. **Set Environment Variables:**
-   Go to "Environment" tab and add:
-   ```
-   API_ID=your_api_id
-   API_HASH=your_api_hash
-   SESSION_STRING=your_session_string_from_local_run
-   BOT_TOKEN=your_bot_token
-   SOURCE_CHANNEL=your_source_channel_username
-   TARGET_CHANNEL=your_target_channel_or_chat_id
-   JOB_KEYWORDS=developer,flutter,react,backend,frontend,software,engineer
-   POLL_INTERVAL=30
-   LOG_LEVEL=info
-   NODE_ENV=production
-   ```
-
-5. **Deploy:**
-   - Click "Create Web Service"
-   - Render will build and deploy your app
-   - Check the logs to ensure it's running
-
-#### Option 2: Using render.yaml (Infrastructure as Code)
-
-1. **The `render.yaml` file is already included in the project**
-
-2. **Push to GitHub and connect to Render:**
-   - Push your code to GitHub
-   - In Render Dashboard, go to "New +" → "Blueprint"
-   - Connect your repository
-   - Render will automatically detect `render.yaml`
-
-3. **Set Environment Variables:**
-   - In the Render dashboard, go to your service
-   - Navigate to "Environment" tab
-   - Add all required environment variables (same as Option 1)
-
-4. **Deploy:**
-   - Render will automatically deploy using the configuration
-
-### Important Notes for Render Deployment
-
-⚠️ **Session String Requirement:**
-- You **MUST** get your `SESSION_STRING` locally first
-- Run the app locally, complete authentication, copy the session string
-- Add it to Render's environment variables
-- Without a valid session string, the app will fail on Render
-
-⚠️ **Free Plan Limitations:**
-- Render free plan spins down after 15 minutes of inactivity
-- Your app will restart when it receives a request
-- Consider upgrading to a paid plan for 24/7 operation
-
-⚠️ **Logs:**
-- View logs in Render Dashboard → Your Service → Logs
-- Logs are also available via Render CLI: `render logs`
-
-### Updating Session String
-
-If your session expires or you need to update it:
-
-1. Run locally: `npm start`
-2. Complete authentication if needed
-3. Copy the new `SESSION_STRING` from logs
-4. Update in Render Dashboard → Environment Variables
-5. Redeploy or restart the service
-
-### Monitoring
-
-- **Health Checks**: Render automatically monitors your service
-- **Logs**: Available in Render Dashboard
-- **Alerts**: Configure email alerts in Render settings
-- **Metrics**: View CPU, Memory usage in Render Dashboard
-
 ## Support 💬
 
 For issues or questions:
-1. Check logs in `logs/` directory (local) or Render Dashboard (deployed)
+1. Check logs in `logs/` directory
 2. Verify all environment variables are set correctly
 3. Ensure channels are accessible and bot has permissions
-4. For Render-specific issues, check Render documentation
 
 ---
 
 **Happy Job Hunting! 🎉**
 
-#   t e l e g r a m - s c r a p p i n g  
- 
